@@ -35,7 +35,7 @@ This guide will walk you through setting up and connecting an ASP.NET Core proje
 4. **Create the Table and Insert Sample Data**:
    - Right-click on the newly created database (`ToDoActivities`), choose "New Query".
    - Paste the following SQL script to create the `ToDoList` table and insert sample data:
-     ________
+      ```sql
      CREATE TABLE ToDoList (
          id INT NOT NULL PRIMARY KEY IDENTITY,
          activity VARCHAR(100) NOT NULL,
@@ -48,7 +48,7 @@ This guide will walk you through setting up and connecting an ASP.NET Core proje
      ('Cook', 'Make Nasi Lemak'),
      ('Wash Clothes', 'Separate whites from colored'),
      ('Do Work', 'Continue Development of app');
-     ________
+     ```
 
    - Execute the query by clicking the "Execute" button.
 
