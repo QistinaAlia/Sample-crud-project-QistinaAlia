@@ -1,13 +1,18 @@
 using CrudSimpleToDo.Pages.To_Do_List;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 using System.Runtime;
+using Microsoft.Extensions.Configuration;
+
 
 namespace CrudSimpleToDo.Pages.ToDoList
 {
     public class CreateModel : PageModel
     {
+        private readonly IConfiguration Configuration;
         public ActivityInfo activityInfo = new ActivityInfo();
         public String errorMessage = "";
         public String successMessage = "";
@@ -15,7 +20,7 @@ namespace CrudSimpleToDo.Pages.ToDoList
         {
         }
 
-        public void OnPost() 
+        public void OnPost()
         {
             activityInfo.activity = Request.Form["activity"];
             activityInfo.describe = Request.Form["describe"];
@@ -30,11 +35,11 @@ namespace CrudSimpleToDo.Pages.ToDoList
 
             try
             {
-                String connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ToDoActivities;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                String connectionString = Configuration.GetConnectionString("DefaultConnection");
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "INSERT INTO ToDoList" + "(activity,describe) VALUES"+"(@activity, @describe);";
+                    String sql = "INSERT INTO ToDoList" + "(activity,describe) VALUES" + "(@activity, @describe);";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
 
@@ -54,6 +59,11 @@ namespace CrudSimpleToDo.Pages.ToDoList
             successMessage = "New task added!";
 
             Response.Redirect("/ToDoList/Index");
+        }
+
+        public CreateModel(IConfiguration configuration)
+        {
+            Configuration = configuration;
         }
     }
 }

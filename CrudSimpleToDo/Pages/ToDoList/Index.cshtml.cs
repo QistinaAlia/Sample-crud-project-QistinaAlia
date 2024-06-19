@@ -1,18 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace CrudSimpleToDo.Pages.To_Do_List
 {
     public class IndexModel : PageModel
     {
+        private readonly IConfiguration Configuration;
+
+
         public List<ActivityInfo> listInfo = new List<ActivityInfo>();
         public void OnGet()
         {
             try
             {
-                String connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ToDoActivities;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-                
+                String connectionString = Configuration.GetConnectionString("DefaultConnection");
+
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -21,15 +25,15 @@ namespace CrudSimpleToDo.Pages.To_Do_List
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            while(reader.Read())
+                            while (reader.Read())
                             {
                                 ActivityInfo activityInfo = new ActivityInfo();
-                                
-                                    activityInfo.id = "" + reader.GetInt32(0);
-                                    activityInfo.activity = reader.GetString(1);
-                                    activityInfo.describe = reader.GetString(2);
-                                    activityInfo.created_at = reader.GetDateTime(3).ToString();
-                                
+
+                                activityInfo.id = "" + reader.GetInt32(0);
+                                activityInfo.activity = reader.GetString(1);
+                                activityInfo.describe = reader.GetString(2);
+                                activityInfo.created_at = reader.GetDateTime(3).ToString();
+
                                 listInfo.Add(activityInfo);
                             }
 
@@ -41,6 +45,11 @@ namespace CrudSimpleToDo.Pages.To_Do_List
             {
                 Console.WriteLine("Exception:" + ex.ToString());
             }
+        }
+
+        public IndexModel(IConfiguration configuration)
+        {
+            Configuration = configuration;
         }
     }
 

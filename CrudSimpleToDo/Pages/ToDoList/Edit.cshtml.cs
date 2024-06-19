@@ -2,17 +2,19 @@ using CrudSimpleToDo.Pages.To_Do_List;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace CrudSimpleToDo.Pages.ToDoList
 {
     public class EditModel : PageModel
     {
+        private readonly IConfiguration Configuration;
         public ActivityInfo activityInfo = new ActivityInfo();
         public String errorMessage = "";
         public String successMessage = "";
         public void OnGet()
         {
-            String id=Request.Query["id"];
+            String id = Request.Query["id"];
 
             try
             {
@@ -32,7 +34,7 @@ namespace CrudSimpleToDo.Pages.ToDoList
                                 activityInfo.id = "" + reader.GetInt32(0);
                                 activityInfo.activity = reader.GetString(1);
                                 activityInfo.describe = reader.GetString(2);
-                                
+
                             }
 
                         }
@@ -44,11 +46,11 @@ namespace CrudSimpleToDo.Pages.ToDoList
             catch (Exception ex)
             {
                 errorMessage = ex.Message;
-        
+
             }
         }
-        
-        public void OnPost() 
+
+        public void OnPost()
         {
             activityInfo.id = Request.Form["id"];
             activityInfo.activity = Request.Form["activity"];
@@ -62,7 +64,7 @@ namespace CrudSimpleToDo.Pages.ToDoList
 
             try
             {
-                String connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=ToDoActivities;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                String connectionString = Configuration.GetConnectionString("DefaultConnection");
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -85,6 +87,11 @@ namespace CrudSimpleToDo.Pages.ToDoList
                 return;
             }
             Response.Redirect("/ToDoList/Index");
+        }
+
+        public EditModel(IConfiguration configuration)
+        {
+            Configuration = configuration;
         }
     }
 }
