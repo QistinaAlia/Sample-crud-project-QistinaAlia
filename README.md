@@ -1,4 +1,4 @@
-# Setting Up and Connecting ASP.NET Core Project with SQL Server in Visual Studio
+# Setting Up and Connecting ASP.NET Core Project (Simple CRUD) with SQL Server in Visual Studio
 
 This guide will walk you through setting up and connecting an ASP.NET Core project that uses SQL Server for the database. Follow these steps to get started:
 
