@@ -1,0 +1,43 @@
+﻿@page
+@model CrudSimpleToDo.Pages.To_Do_List.IndexModel
+@{
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<div class="container">
+    <h2>To Do List</h2>
+    <a class='btn btn-primary btn-add' href='/ToDoList/Create'>Add new task!</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listInfo)
+            {
+                <tr>
+                    <td>@item.activity</td>
+                    <td>@item.describe</td>
+                    <td>@item.created_at</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/ToDoList/Edit?id=@item.id">Edit</a>
+                        <a class="btn btn-success btn-sm done-button" href="/ToDoList/deletes?id=@item.id">Done!</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="warning-message" id="warningMessage">
+        Warning: Clicking this button will delete the task. Are you sure it's complete?
+    </div>
+</div>
+
+@section Scripts {
+    <script src="/js/site.js"></script>
+}
