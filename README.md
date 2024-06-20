@@ -84,9 +84,8 @@ This guide will walk you through setting up and connecting an ASP.NET Core proje
 
 2. **Verify Functionality**:
    - Navigate to pages that interact with the database (e.g., creating new tasks).
-   - Ensure that operations such as adding, updating, and deleting tasks function correctly.
 
 ## Troubleshooting
 
-- **Connection Issues**: If you encounter connection issues, double-check the connection string in `appsettings.json`. Ensure that your SQL Server instance is running and accessible from your development environment.
+- **Connection Issues**: If encounter connection issues, double-check the connection string in `appsettings.json`. Ensure that SQL Server instance is running and accessible from your development environment.
 - **Permissions**: Ensure that your SQL Server instance allows integrated security or that you have appropriate credentials if using SQL Server authentication.
