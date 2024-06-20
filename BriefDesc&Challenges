@@ -21,7 +21,7 @@ Challenges
 
 While working on this project, I ran into a few bumps along the way:
 
-1. Setting Up the Environment: I've always used a university server before, so setting up my own environment with a local SQL Server and .NET Core project was new to me. It took some time to figure it all out.
+1. Setting Up the Environment: I've always used a university server before, so setting up my own environment with a local SQL Server and .NET Core project was new to me. It took some time to figure it all out. I had trouble figuring out how to set up the databases for other machines's access, so I provided step by step on how to create the same database locally. 
 
 2. Configuration Issues: Getting the connection strings right in `appsettings.json` was a bit tricky at first.
 
