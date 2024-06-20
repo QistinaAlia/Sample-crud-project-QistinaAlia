@@ -4,7 +4,7 @@ This guide will walk you through setting up and connecting an ASP.NET Core proje
 
 ## Prerequisites
 
-1. **Visual Studio**: Make sure you have Visual Studio installed. You can download it from [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/).
+1. **Visual Studio 2022**: Make sure you have Visual Studio installed (Preferably Visual Studios 2022). You can download it from [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/).
 
 2. **SQL Server**: Install SQL Server or use an existing instance. If you don't have SQL Server installed, you can download SQL Server Express from [Microsoft SQL Server Downloads](https://www.microsoft.com/en-us/sql-server/sql-server-downloads).
 
