@@ -1,0 +1,32 @@
+Approach and Challenges
+Approach
+
+For this project, I built a simple CRUD (Create, Read, Update, Delete) application using ASP.NET Core Razor Pages. Here's how I made it:
+
+1. Index Page: This page shows a list of tasks from the `ToDoList` table in the SQL Server database. Users can add new tasks, edit existing ones, or mark tasks as done (which deletes them).
+2. Index.cshtml.cs: This file handles fetching and displaying the list of tasks. It connects to the database using a connection string from `appsettings.json`, executes a query to get all tasks, and populates a list to be displayed on the Index page.
+
+3. Edit Page: This page lets users update tasks. It fetches the task details based on the ID, displays them in a form, and updates the database when submitted.
+4. Edit.cshtml.cs: This file manages the editing of existing tasks. It fetches the task details based on the task ID, displays them in a form, and updates the task in the database using an SQL `UPDATE` statement when the form is submitted.
+
+5. Create Page: This page has a form to add new tasks to the `ToDoList` table. When submitted, the new task gets added to the database.
+6. Create.cshtml.cs: This file is responsible for adding new tasks. It takes user input from the form, validates it, and then inserts the new task into the database using an SQL `INSERT` statement.
+
+7. Delete Functionality: There's a delete feature for marking tasks as done, which removes them from the database.
+8. Deletes.cshtml.cs: This file handles the deletion of tasks. It takes the task ID from the query string and deletes the corresponding task from the database using an SQL `DELETE` statement.
+
+In each of these .cs files, I used dependency injection to access the configuration settings, specifically to retrieve the database connection string. This ensures a centralized and secure way to manage configuration settings.
+
+Challenges
+
+While working on this project, I ran into a few bumps along the way:
+
+1. Setting Up the Environment: I've always used a university server before, so setting up my own environment with a local SQL Server and .NET Core project was new to me. It took some time to figure it all out.
+
+2. Configuration Issues: Getting the connection strings right in `appsettings.json` was a bit tricky at first.
+
+Despite these challenges, the project was a great learning experience. It was rewarding to set up a full-stack application and deal with real-world configuration and deployment issues.
+
+
+
+
