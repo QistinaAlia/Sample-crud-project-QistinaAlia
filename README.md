@@ -21,20 +21,20 @@ This guide will walk you through setting up and connecting an ASP.NET Core proje
 
 ### Creating the Database and Table Using Visual Studio
 
-1. **Open SQL Server Object Explorer**:
-   - In Visual Studio, go to `View -> SQL Server Object Explorer`.
+1. **Open Server Explorer**:
+   - In Visual Studio, go to `View -> Server Explorer`.
 
-2. **Connect to SQL Server**:
-   - Right-click on "SQL Server" and choose "Add SQL Server".
-   - Enter your SQL Server instance name (How to find instance name: https://www.youtube.com/watch?v=qFNZNFw_Wf8&t=0s) and authentication details (Windows or SQL Server authentication).
+2. **Connect to Database**:
+   - Right-click on "Data Connections" and choose "Add Connection".
+   - Enter your SQL Server instance name (How to find instance name: [https://www.youtube.com/watch?v=qFNZNFw_Wf8&t=0s](https://www.youtube.com/watch?v=qFNZNFw_Wf8&t=0s)) and authentication details (Windows or SQL Server authentication).
+   - In the "Connect to Server" dialog, select or enter the name of the database to connect to, or choose "New..." to create a new database.
+   - If creating a new database, name it `ToDoActivities` and click "OK".
 
-3. **Create a New Database**:
-   - Once connected, right-click on "Databases" and choose "Add New Database".
-   - Name your database `ToDoActivities` and click "OK".
-
-4. **Create the Table and Insert Sample Data**:
-   - Right-click on the newly created database (`ToDoActivities`), choose "New Query".
+3. **Create the Table and Insert Sample Data**:
+   - Once connected, expand the new `ToDoActivities` database under "Data Connections".
+   - Right-click on the "Tables" folder and choose "New Query".
    - Paste the following SQL script to create the `ToDoList` table and insert sample data:
+
       ```sql
      CREATE TABLE ToDoList (
          id INT NOT NULL PRIMARY KEY IDENTITY,
